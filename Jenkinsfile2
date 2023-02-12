@@ -4,7 +4,7 @@ pipeline {
      git_branch = "master"
    }
 
- agent any
+ agent {label 'test'}
  
   stages {
     stage('Pull Source') {
@@ -20,7 +20,7 @@ pipeline {
     }
      stage('Docker Image Build') {     
         steps {
-              sh 'sudo docker build -t test-image . '
+              sh 'sudo docker build -t demo-image . '
                }
              }
         stage('Docker image push') {
@@ -28,8 +28,8 @@ pipeline {
                 // sh 'aws ecr get-login-password --region ap-south-1 | sudo docker login --username AWS --password-stdin 738275578260.dkr.ecr.ap-south-1.amazonaws.com'
                  withCredentials([usernamePassword(credentialsId: '53365e69-a023-4603-85f7-b233c2786e87', passwordVariable: 'Password', usernameVariable: 'Username')]) {
                  sh "sudo docker login -u ${env.Username} -p ${env.Password}"
-                 sh "sudo docker image tag test-image salilkul87/test-image"
-                 sh "sudo docker image push salilkul87/test-image" 
+                 sh "sudo docker image tag demo-image salilkul87/demo-image"
+                 sh "sudo docker image push salilkul87/demo-image" 
                } 
              }  
           }
