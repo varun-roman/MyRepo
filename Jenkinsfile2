@@ -12,13 +12,13 @@ pipeline {
         git credentialsId: 'bc5c2b95-cf0b-46ad-99b6-64c6d2942669', branch: "${git_branch}", url: "${git_url}"
       }
     }    
-    stage('Build Maven Jar') {   
-       steps {         
-           sh 'mvn clean'
-           sh 'mvn -Dmaven.test.failure.ignore=true install'
-           sh 'pwd'
-           }
-        }
+   // stage('Build Maven Jar') {   
+   //    steps {         
+   //        sh 'mvn clean'
+   //        sh 'mvn -Dmaven.test.failure.ignore=true install'
+   //        sh 'pwd'
+   //        }
+   //     }
      stage('Docker Image Build') {     
         steps {
            script{
