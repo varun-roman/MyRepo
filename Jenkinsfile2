@@ -13,13 +13,11 @@ pipeline {
       }
      }
     
-   // stage('Build Maven Jar') {   
-   //    steps {         
-   //        sh 'mvn clean'
-   //        sh 'mvn -Dmaven.test.failure.ignore=true install'
-   //        sh 'pwd'
-   //        }
-   //     }
+    stage('Maven Build') {
+     steps { 
+       sh "if [ -f \"pom.xml\" ];then mvn -B -f pom.xml clean package && cp target/*.jar .;else echo \"This is not a Java Project\";fi"
+     }
+    }
      stage('Docker Image Build') {     
         steps {
               sh 'sudo docker build -t test-image . '
@@ -33,5 +31,6 @@ pipeline {
                  sh "docker push test-image:1" 
                } 
              }  
-     }
+          }
+    }
 }
