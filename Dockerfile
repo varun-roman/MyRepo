@@ -4,9 +4,9 @@ RUN apt-get install wget curl vim -y
 RUN useradd testuser
 LABEL user=sk
 COPY index.html /var/www/html
-COPY .test /var/www/html
-ADD myfile.txt /var/www/html
-ADD tmp.tar /var/www
+#COPY .test /var/www/html
+#ADD myfile.txt /var/www/html
+#ADD tmp.tar /var/www
 ENV app=dev
 ARG VERSION=1
 RUN echo "This is version $VERSION" > version.txt
