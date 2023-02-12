@@ -11,7 +11,9 @@ pipeline {
       steps {
         git credentialsId: 'bc5c2b95-cf0b-46ad-99b6-64c6d2942669', branch: "${git_branch}", url: "${git_url}"
       }
-    }    
+     }
+    }  
+    
    // stage('Build Maven Jar') {   
    //    steps {         
    //        sh 'mvn clean'
