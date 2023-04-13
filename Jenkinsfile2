@@ -27,7 +27,7 @@ pipeline {
         stage('Docker image push') {
            steps {
                 // sh 'aws ecr get-login-password --region ap-south-1 | sudo docker login --username AWS --password-stdin 738275578260.dkr.ecr.ap-south-1.amazonaws.com'
-                 withCredentials([usernamePassword(credentialsId: '53365e69-a023-4603-85f7-b233c2786e87', passwordVariable: 'Password', usernameVariable: 'Username')]) {
+                 withCredentials([usernamePassword(credentialsId: 'df745b56-66b0-4985-baf6-0d5c11c7191a', passwordVariable: 'Password', usernameVariable: 'Username')]) {
                  sh "sudo docker login -u ${env.Username} -p ${env.Password}"
                  sh "sudo docker image tag demo-image demo-image:${BUILD_NUMBER}"
                  sh "sudo docker image tag demo-image salilkul87/demo-image:${BUILD_NUMBER}"
