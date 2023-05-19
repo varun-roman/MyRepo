@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building.....commit new..................'
+                echo 'Building.................'
             }
         }
         stage('Test') {
