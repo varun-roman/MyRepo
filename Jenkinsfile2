@@ -4,8 +4,8 @@ pipeline {
      git_branch = "master"
    }
 
- //agent {label 'test'}
-   agent any
+ agent {label 'dev'}
+ // agent any
  
   stages {
     stage('Pull Source') {
@@ -17,7 +17,8 @@ pipeline {
     
     stage('Maven Build') {
      steps { 
-       sh "if [ -f \"pom.xml\" ];then mvn -B -f pom.xml clean package && cp target/*.jar .;else echo \"This is not a Java Project\";fi"
+       // sh "if [ -f \"pom.xml\" ];then mvn -B -f pom.xml clean package && cp target/*.jar .;else echo \"This is not a Java Project\";fi"
+          mvn -B -f pom.xml clean package && cp target/*.jar . 
      }
     }
      stage('Docker Image Build') {     
