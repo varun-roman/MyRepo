@@ -17,8 +17,8 @@ pipeline {
     
     stage('Maven Build') {
      steps { 
-       // sh "if [ -f \"pom.xml\" ];then mvn -B -f pom.xml clean package && cp target/*.jar .;else echo \"This is not a Java Project\";fi"
-          mvn -B -f pom.xml clean package && cp target/*.jar . 
+        sh "if [ ! -f \"pom.xml\" ];then mvn -B -f pom.xml clean package && cp target/*.jar .;else echo \"This is not a Java Project\";fi"
+          
      }
     }
      stage('Docker Image Build') {     
