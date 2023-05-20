@@ -15,7 +15,7 @@ pipeline {
       }
      }
     
-    stage('Maven Build') {
+    stage('Maven Buildd') {
      steps { 
         sh "if [ -f \"pom.xml\" ];then mvn -B -f pom.xml clean package && cp target/*.jar .;else echo \"This is not a Java Project\";fi"
           
